@@ -1,3 +1,4 @@
+import {isPlatformBrowser} from '@angular/common';
 import {
     AfterViewInit,
     ChangeDetectorRef,
@@ -5,7 +6,9 @@ import {
     ElementRef,
     Inject,
     Input,
+    NgZone,
     Optional,
+    PLATFORM_ID,
     Renderer2,
     Self,
     ViewContainerRef,
@@ -30,6 +33,8 @@ export class TuiAutoFocusDirective implements AfterViewInit {
     autoFocus = true;
 
     constructor(
+        @Inject(PLATFORM_ID)
+        private readonly platformId: string,
         @Inject(ChangeDetectorRef)
         private readonly changeDetectorRef: ChangeDetectorRef,
         @Inject(ElementRef)
@@ -42,6 +47,7 @@ export class TuiAutoFocusDirective implements AfterViewInit {
         @Inject(Renderer2) private readonly renderer: Renderer2,
         @Inject(ViewContainerRef)
         private readonly viewContainerRef: ViewContainerRef,
+        private readonly ngZone: NgZone,
     ) {}
 
     ngAfterViewInit() {
@@ -58,10 +64,14 @@ export class TuiAutoFocusDirective implements AfterViewInit {
             return;
         }
 
-        if (!this.isIos) {
-            setTimeout(() => {
-                setNativeFocused(element);
-                this.changeDetectorRef.markForCheck();
+        if (!this.isIos && isPlatformBrowser(this.platformId)) {
+            this.ngZone.runOutsideAngular(() => {
+                // P.S. we'd been using the `setTimeout` previously.
+                // The `HTMLElement.prototype.focus` triggers the layout update. We'd want to focus
+                // the element in the next frame to prevent the frame drop (e.g. if the composite thread is busy).
+                requestAnimationFrame(() => {
+                    setNativeFocused(element);
+                });
             });
 
             return;

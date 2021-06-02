@@ -15,6 +15,18 @@ import {TuiAutoFocusDirective} from '../autofocus.directive';
 import {TuiAutoFocusModule} from '../autofocus.module';
 
 describe('TuiAutoFocus directive', () => {
+    const originalRequestAnimationFrame = window.requestAnimationFrame;
+
+    beforeAll(() => {
+        // The `requestAnimationFrame` differs from the `setTimeout` and it's harder to test it inside
+        // the Karma environment, thus we fall-back to the `setTimeout`.
+        window.requestAnimationFrame = setTimeout;
+    });
+
+    afterAll(() => {
+        window.requestAnimationFrame = originalRequestAnimationFrame;
+    });
+
     describe('works for focusable HTML element', () => {
         @Component({
             template: ` <div tuiAutoFocus tabindex="0"></div> `,
