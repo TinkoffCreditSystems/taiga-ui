@@ -43,7 +43,12 @@
         "cypress:open": "cypress open --browser chrome --project ./projects/demo-integrations",
         "cypress:run": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations",
         "cypress:run:master": "cypress run --env ci=true --browser chrome --headless --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
-        "cypress:open:master": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\""
+        "cypress:open:master": "cypress open --browser chrome --project ./projects/demo-integrations --config baseUrl=\"https://taiga-ui.dev/next/\"",
+        "*** Schematics ***": "",
+        "taiga-schematics:build": "npm run build taiga-schematics && npm run build:schematics",
+        "build:schematics": "tsc -p ./projects/taiga-schematics/tsconfig.schematics.json",
+        "test:schematics": "tsc -p ./projects/taiga-schematics/tsconfig.spec.json && jasmine ./dist/taiga-schematics/**/*.spec.js",
+        "postbuild:schematics": "cp ./projects/taiga-schematics/schematics/collection.json ./dist/taiga-schematics/collection.json && cp ./projects/taiga-schematics/schematics/ng-add/schema.json ./dist/taiga-schematics/ng-add/schema.json"
     },
     "keywords": [
         "angular",
@@ -144,6 +149,7 @@
         "less-plugin-npm-import": "^2.1.0",
         "lint-staged": "^8.1.3",
         "ng-bullet": "^1.0.3",
+        "ng-morph": "^2.0.0",
         "ng-packagr": "^9.1.5",
         "prettier": "^2.1.1",
         "protractor": "~5.4.0",

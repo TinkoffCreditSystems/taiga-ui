@@ -1,0 +1,5 @@
+{
+    "extends": "./tsconfig.schematics.json",
+    "include": ["**/*.spec.ts", "**/*.d.ts"],
+    "exclude": []
+}

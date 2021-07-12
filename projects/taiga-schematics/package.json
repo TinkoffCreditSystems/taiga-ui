@@ -2,9 +2,6 @@
     "name": "taiga-ui",
     "version": "2.12.0",
     "description": "Taiga UI package that provides ng add command for Taiga library",
-    "scripts": {
-        "publish": "cp ../../README.md ./ && npm publish && rm README.md"
-    },
     "keywords": [
         "angular",
         "kit",
@@ -14,20 +11,12 @@
         "service",
         "directive"
     ],
+    "schematics": "./collection.json",
     "license": "Apache-2.0",
-    "authors": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
-    "maintainers": [
-        "Alex Inkin <alexander@inkin.ru>",
-        "Roman Sedov <79601794011@ya.ru>"
-    ],
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
-    "main": "index.js",
-    "engines": {
-        "node": ">= 10",
-        "npm": ">= 3"
+    "dependencies": {
+        "@angular-devkit/schematics": "^9.1.12",
+        "ng-morph": "2.0.0"
     }
 }

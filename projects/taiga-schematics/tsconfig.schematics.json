@@ -1,0 +1,26 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "lib": ["es2018", "dom"],
+        "outDir": "../../dist/taiga-schematics",
+        "declaration": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noEmitOnError": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "noUnusedLocals": true,
+        "rootDir": "schematics",
+        "skipDefaultLibCheck": true,
+        "skipLibCheck": true,
+        "sourceMap": true,
+        "strictNullChecks": true,
+        "target": "es6",
+        "types": ["jasmine", "node"]
+    },
+    "include": ["schematics/**/*"],
+    "exclude": ["schematics/**/*.spec.ts"]
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../node_modules/@angular-devkit/schematics/collection-schema.json",
+    "schematics": {
+        "ng-add": {
+            "description": "Add Taiga UI to the project.",
+            "factory": "./ng-add/index#ngAdd",
+            "schema": "./ng-add/schema.json"
+        },
+        "ng-add-setup-project": {
+            "private": true,
+            "description": "Sets up the project after dependencies have been installed",
+            "factory": "./ng-add/setup-project",
+            "schema": "./ng-add/schema.json"
+        }
+    }
+}

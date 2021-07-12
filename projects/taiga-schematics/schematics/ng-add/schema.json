@@ -1,0 +1,61 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "taiga-ui-ng-add",
+    "title": "Taiga UI ng-add",
+    "type": "object",
+    "properties": {
+        "project": {
+            "type": "string",
+            "description": "The name of the project.",
+            "$default": {
+                "$source": "projectName"
+            }
+        },
+        "addDialogsModule": {
+            "description": "Setting the dialog module",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you want to use a Taiga UI dialogs?",
+                "type": "confirmation"
+            }
+        },
+        "addSanitizer": {
+            "description": "Setting the TUI_SANITIZER",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you plan on using custom SVGs/icons or addon-editor? If `Yes` we will include ng-dompurify as sanitizer, read more.",
+                "type": "confirmation"
+            }
+        },
+        "addNotificationsModule": {
+            "description": "Setting the notifications module",
+            "type": "boolean",
+            "default": true,
+            "x-prompt": {
+                "message": "Do you want to use a Taiga UI notifications?",
+                "type": "confirmation"
+            }
+        },
+        "addons": {
+            "description": "Setting additional packages",
+            "type": "array",
+            "x-prompt": {
+                "message": "Choose additional packages to install",
+                "type": "list",
+                "multiselect": true,
+                "items": [
+                    "addon-doc",
+                    "addon-charts",
+                    "addon-commerce",
+                    "addon-mobile",
+                    "addon-table",
+                    "addon-tablebars",
+                    "addon-editor"
+                ]
+            }
+        }
+    },
+    "required": []
+}

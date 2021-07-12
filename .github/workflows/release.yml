@@ -41,6 +41,7 @@ jobs:
         npm run build addon-table
         npm run build addon-tablebars
         npm run build:icons
+        npm run taiga-schematics:build
     - name: publish packages
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -57,3 +58,4 @@ jobs:
         npm publish dist/addon-table
         npm publish dist/addon-tablebars
         npm publish dist/icons
+        npm publish dist/taiga-schematics

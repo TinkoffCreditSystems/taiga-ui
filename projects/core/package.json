@@ -14,6 +14,7 @@
     "license": "Apache-2.0",
     "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
     "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "schematics": "./schematics/collection.json",
     "dependencies": {
         "@taiga-ui/i18n": "2.12.0"
     },
