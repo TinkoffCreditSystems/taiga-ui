@@ -7,6 +7,7 @@ import {default as example2Ts} from '!!raw-loader!./examples/2/index.ts';
 import {default as example3Html} from '!!raw-loader!./examples/3/index.html';
 import {default as example3Ts} from '!!raw-loader!./examples/3/index.ts';
 
+import {default as changeDetection4Ts} from '!!raw-loader!./../../../change-detection-strategy.ts';
 import {default as example4Component} from '!!raw-loader!./examples/4/custom-list/custom-list.component.ts';
 import {default as example4Template} from '!!raw-loader!./examples/4/custom-list/custom-list.template.html';
 import {default as example4Html} from '!!raw-loader!./examples/4/index.html';
@@ -46,7 +47,13 @@ export class ExampleTuiDataListComponent {
     readonly example4 = {
         TypeScript: example4Ts,
         HTML: example4Html,
-        Component: example4Component,
-        Template: example4Template,
+        Support: [
+            {'src/app/custom-list/custom-list.component.ts': example4Component},
+            {'src/app/custom-list/custom-list.template.html': example4Template},
+            {'src/change-detection-strategy.ts': changeDetection4Ts},
+        ],
+        SupportDeclaration: [
+            {'./custom-list/custom-list.component': 'CustomListComponent'},
+        ],
     };
 }

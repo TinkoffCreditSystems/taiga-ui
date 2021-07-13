@@ -1,7 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {EMPTY_ARRAY, setNativeFocused, TUI_DEFAULT_MATCHER} from '@taiga-ui/cdk';
 import {isEditingKey, TuiDataListComponent} from '@taiga-ui/core';
-import {changeDetection} from '../../../../../../change-detection-strategy';
 
 interface Items<T> {
     readonly name: string;
@@ -11,7 +10,7 @@ interface Items<T> {
 @Component({
     selector: 'custom-list',
     templateUrl: './custom-list.template.html',
-    changeDetection,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CustomListComponent<T> {
     @Input()
