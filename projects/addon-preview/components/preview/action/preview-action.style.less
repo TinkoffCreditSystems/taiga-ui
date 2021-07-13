@@ -1,0 +1,25 @@
+@import 'taiga-ui-local';
+@import '../mixin.style.less';
+
+:host {
+    display: inline-block;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.button {
+    .preview-item();
+    .transition(background);
+
+    &:hover {
+        background: rgba(159, 159, 159, 0.86);
+    }
+
+    :host:not([data-size='fullscreen']) & {
+        animation: tuiFadeIn 0.3s;
+    }
+
+    :host:not([data-size='fullscreen']).ng-animating & {
+        display: none;
+    }
+}

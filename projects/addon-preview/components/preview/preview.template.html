@@ -1,0 +1,54 @@
+<section
+    #contentWrapper
+    class="wrapper"
+    subtree
+    childList
+    characterData
+    attributeFilter="src"
+    [class.not-interactive-content]="zoomable"
+    [class.transitive]="transitioned$ | async"
+    [style.transform]="wrapperTransform$ | async"
+    [style.cursor]="cursor$ | async"
+    (tuiResize)="onResize($event)"
+    (waMutationObserver)="onMutation(contentWrapper)"
+>
+    <ng-content></ng-content>
+</section>
+
+<header class="header">
+    <div class="title">
+        <ng-content select="tui-preview-title"></ng-content>
+    </div>
+
+    <ng-content select="tui-preview-pagination"></ng-content>
+
+    <div class="actions">
+        <ng-content select="tui-preview-action"></ng-content>
+
+        <tui-preview-action
+            class="close-button"
+            icon="tuiIconCloseLarge"
+            title="Закрыть"
+            (click)="close()"
+        ></tui-preview-action>
+    </div>
+</header>
+
+<footer class="footer">
+    <tui-preview-action
+        *ngIf="rotatable"
+        icon="tuiIconRotate"
+        tuiHint="Повернуть"
+        tuiHintId="Rotate"
+        tuiHintDirection="top-right"
+        tuiHintMode="onDark"
+        (click)="rotate()"
+    ></tui-preview-action>
+
+    <tui-preview-zoom
+        *ngIf="zoomable"
+        [min]="minZoom"
+        [value]="zoom$ | async"
+        (valueChange)="zoom$.next($event)"
+    ></tui-preview-zoom>
+</footer>

@@ -1,0 +1,34 @@
+@import 'taiga-ui-local';
+@import '../mixin.style.less';
+
+:host {
+    .preview-item();
+    .text-body-s();
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+}
+
+.arrow {
+    .transition(background);
+    color: var(--tui-text-01-night);
+
+    &:hover {
+        background: var(--tui-clear-inverse-hover);
+    }
+
+    &[disabled] {
+        opacity: var(--tui-disabled-opacity);
+    }
+
+    &_left {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    &_right {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

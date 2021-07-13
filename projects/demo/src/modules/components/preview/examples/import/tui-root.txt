@@ -1,0 +1,4 @@
+<tui-root>
+    ...
+    <tui-preview-host ngProjectAs="tuiOverPopups"></tui-preview-host>
+</tui-root>

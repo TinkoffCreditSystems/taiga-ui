@@ -1,0 +1,23 @@
+<button
+    tuiIconButton
+    title="Назад"
+    class="arrow arrow_left"
+    size="s"
+    appearance=""
+    icon="tuiIconArrowLeft"
+    shape="rounded"
+    [disabled]="leftButtonDisabled"
+    (click)="onArrowClick(-1)"
+></button>
+{{index + 1}}/{{lastIndex + 1}}
+<button
+    tuiIconButton
+    title="Вперед"
+    class="arrow arrow_right"
+    size="s"
+    appearance=""
+    icon="tuiIconArrowRight"
+    shape="rounded"
+    [disabled]="rightButtonDisabled"
+    (click)="onArrowClick(1)"
+></button>

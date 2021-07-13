@@ -1,0 +1,27 @@
+{
+    "name": "@taiga-ui/addon-preview",
+    "version": "2.7.0",
+    "description": "A library to show a modal with custom content preview",
+    "keywords": [
+        "angular",
+        "component",
+        "preview",
+        "documents",
+        "images"
+    ],
+    "license": "Apache-2.0",
+    "repository": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "homepage": "https://github.com/TinkoffCreditSystems/taiga-ui",
+    "peerDependencies": {
+        "@angular/common": ">=9.0.0",
+        "@angular/core": ">=9.0.0",
+        "@ng-web-apis/mutation-observer": ">=1.1.0",
+        "@tinkoff/ng-polymorpheus": ">=3.0.0",
+        "@taiga-ui/cdk": "2.7.0",
+        "@taiga-ui/core": "2.7.0",
+        "@taiga-ui/kit": "2.7.0",
+        "@taiga-ui/icons": "2.7.0",
+        "@taiga-ui/i18n": "2.7.0",
+        "rxjs": ">=6.0.0"
+    }
+}

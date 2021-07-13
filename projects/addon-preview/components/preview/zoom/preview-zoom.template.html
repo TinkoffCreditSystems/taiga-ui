@@ -1,0 +1,50 @@
+<section class="zoom">
+    <button
+        tuiIconButton
+        title="Уменьшить масштаб"
+        class="sign sign_minus"
+        size="s"
+        appearance=""
+        icon="tuiIconMinus"
+        shape="rounded"
+        [disabled]="leftButtonDisabled"
+        (click)="onMinus()"
+    ></button>
+    <div
+        class="ghost-dot"
+        tuiHintMode="onDark"
+        tuiHintDirection="top-right"
+        [tuiManualHint]="hint"
+        [tuiManualHintShow]="hintShow$ | async"
+        [style.left.px]="ghostLeft"
+    ></div>
+    <ng-template #hint>{{getHintText(valueChange | async)}} </ng-template>
+    <tui-slider
+        class="slider"
+        [min]="min"
+        [max]="max"
+        [ngModel]="value"
+        (ngModelChange)="onModelChange($event)"
+    ></tui-slider>
+    <button
+        tuiIconButton
+        title="Увеличить масштаб"
+        class="sign sign_plus"
+        size="s"
+        appearance=""
+        icon="tuiIconPlus"
+        shape="rounded"
+        [disabled]="rightButtonDisabled"
+        (click)="onPlus()"
+    ></button>
+</section>
+
+<tui-preview-action
+    icon="tuiIconCollapse"
+    tuiHint="Сбросить масштаб"
+    tuiHintId="Collapse"
+    tuiHintDirection="top-right"
+    tuiHintMode="onDark"
+    [class.invisible]="!collapseVisible"
+    (click)="onModelChange(min)"
+></tui-preview-action>

@@ -1,0 +1,62 @@
+<div class="tui-space_bottom-2">Прикручены все возможности</div>
+
+<button
+    tuiButton
+    size="m"
+    type="button"
+    class="tui-space_bottom-4"
+    (click)="show()"
+>
+    Показать превью
+</button>
+
+<ng-template #preview>
+    <tui-preview [rotatable]="true">
+        <tui-preview-title>{{title}}</tui-preview-title>
+        <tui-preview-pagination
+            [lastIndex]="1"
+            [(index)]="index"
+        ></tui-preview-pagination>
+
+        <tui-preview-action
+            icon="tuiIconTrash"
+            title="Удалить"
+            (click)="delete()"
+        ></tui-preview-action>
+        <tui-preview-action
+            icon="tuiIconDownload"
+            title="Скачать"
+            (click)="download()"
+        ></tui-preview-action>
+
+        <div polymorpheus-outlet [content]="previewContent">
+            <ng-template let-src>
+                <img alt="" [src]="src" />
+            </ng-template>
+        </div>
+    </tui-preview>
+</ng-template>
+
+<ng-template #contentSample>
+    <div class="content">
+        <h1>Важный документ</h1>
+
+        <p>
+            Всем привет! Это некий важный документ в формате а4, хотя и
+            наверстан в html
+        </p>
+
+        <p>
+            Это показывает, что preview компонент может работать с совершенно
+            любым контентом: так вы сможете показать любой шаблон, картинку, pdf
+            или даже iframe со своим любимым сайтом. Мы поставим этот контент по
+            центру портала и позволим пользователю управлять им, а вам
+            предоставим удобные рычаги для его смены и обработки действий
+        </p>
+
+        <img
+            class="polymorpheus"
+            src="https://github.com/TinkoffCreditSystems/ng-polymorpheus/raw/master/projects/demo/assets/logo.svg"
+        />
+    </div>
+</ng-template>

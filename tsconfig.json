@@ -41,6 +41,8 @@
             "@taiga-ui/addon-charts/*": ["projects/addon-charts/*"],
             "@taiga-ui/addon-commerce": ["projects/addon-commerce/index"],
             "@taiga-ui/addon-commerce/*": ["projects/addon-commerce/*"],
+            "@taiga-ui/addon-preview": ["projects/addon-preview/index"],
+            "@taiga-ui/addon-preview/*": ["projects/addon-preview/*"],
             "@taiga-ui/addon-tablebars": ["projects/addon-tablebars/index"],
             "@taiga-ui/addon-tablebars/*": ["projects/addon-tablebars/*"],
             "@taiga-ui/addon-table": ["projects/addon-table/index"],

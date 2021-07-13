@@ -8,6 +8,7 @@ import {
     TuiThemeAndroidModule,
     TuiThemeIosModule,
 } from '@taiga-ui/addon-mobile';
+import {TuiPreviewHostModule} from '@taiga-ui/addon-preview';
 import {TuiTableBarsHostModule} from '@taiga-ui/addon-tablebars';
 import {TuiDialogModule, TuiLinkModule, TuiModeModule} from '@taiga-ui/core';
 import {MarkdownModule} from 'ngx-markdown';
@@ -34,6 +35,7 @@ import {LogoModule} from './logo/logo.module';
         TuiMobileDialogModule,
         TuiModeModule,
         TuiLinkModule,
+        TuiPreviewHostModule,
         GettingStartedModule,
         HomeModule,
         LandingModule,

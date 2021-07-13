@@ -1,0 +1,21 @@
+<button
+    tuiButton
+    size="m"
+    type="button"
+    class="tui-space_bottom-4"
+    (click)="show()"
+>
+    Показать простое превью
+</button>
+
+<ng-template #preview>
+    <tui-preview [rotatable]="false" [zoomable]="false">
+        <iframe
+            class="content"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+        ></iframe>
+    </tui-preview>
+</ng-template>

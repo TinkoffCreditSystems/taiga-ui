@@ -1,0 +1,104 @@
+<tui-doc-page header="Preview" package="ADDON-PREVIEW">
+    <ng-template pageTab>
+        <p i18n>
+            Preview component allows to open modal for viewing some document and
+            to work with it (download, zoom, rotate and etc)
+        </p>
+
+        <p>
+            В качестве документа можно передать как изображение, так и
+            совершенно любой контент
+        </p>
+
+        <tui-notification class="tui-space_bottom-4">
+            Компонент автоматически подстраивается под мобильное устройство
+        </tui-notification>
+
+        <tui-notification status="warning">
+            Перед использованием не забудьте добавить
+            <code>tui-preview-host</code> в <code>tui-root</code> вашего
+            приложения (подробнее в разделе "Подключение")
+        </tui-notification>
+
+        <tui-doc-example
+            id="default"
+            i18n-heading
+            heading="Full preview"
+            [content]="example1"
+        >
+            <tui-preview-example-1></tui-preview-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="simple"
+            i18n-heading
+            heading="Simple mode"
+            [content]="example2"
+        >
+            <tui-preview-example-2></tui-preview-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="loading"
+            i18n-heading
+            heading="With loading and unavailable image"
+            [content]="example3"
+        >
+            <tui-preview-example-3></tui-preview-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                Добавьте <code>TuiPreviewHostModule</code> в главный модуль
+                вашего приложения:
+
+                <tui-doc-code
+                    filename="app.module.ts"
+                    [code]="exampleImportHostModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Добавьте <code>tui-preview-host</code> в
+                <code>tui-root</code> вашего приложения:
+
+                <tui-doc-code
+                    filename="app.component.html"
+                    [code]="exampleTuiRoot"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Импортируйте <code>TuiPreviewModule</code> в модуль, откуда
+                будет вызываться превью
+
+                <tui-doc-code
+                    filename="some.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Создайте в шаблоне компонента template с tui-preview, заполняйте
+                его необходимым содержимым
+
+                <tui-doc-code
+                    filename="some.component.html"
+                    [code]="exampleTemplate"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                Запускайте компонент из <code>TuiPreviewService</code>, как в
+                примерах
+
+                <tui-doc-code
+                    filename="some.component.ts"
+                    [code]="exampleComponent"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

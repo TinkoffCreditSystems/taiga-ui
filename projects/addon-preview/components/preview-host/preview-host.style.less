@@ -1,0 +1,34 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    height: 0;
+
+    &:empty:before {
+        opacity: 0;
+    }
+
+    &:before {
+        .transition(opacity);
+        content: '';
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.75);
+        pointer-events: none;
+    }
+}
+
+.content {
+    display: flex;
+    outline: none;
+    width: 100%;
+    height: 100vh;
+}

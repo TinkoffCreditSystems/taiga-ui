@@ -1,0 +1,26 @@
+<ng-template #preview>
+    <tui-preview>
+        <tui-preview-title>{{title}}</tui-preview-title>
+        <tui-preview-pagination
+            [lastIndex]="1"
+            [(index)]="index"
+        ></tui-preview-pagination>
+
+        <tui-preview-action
+            icon="tuiIconTrash"
+            title="Удалить"
+            (click)="delete()"
+        ></tui-preview-action>
+        <tui-preview-action
+            icon="tuiIconDownload"
+            title="Скачать"
+            (click)="download()"
+        ></tui-preview-action>
+
+        <div polymorpheus-outlet [content]="previewContent">
+            <ng-template let-src>
+                <img [src]="src" />
+            </ng-template>
+        </div>
+    </tui-preview>
+</ng-template>

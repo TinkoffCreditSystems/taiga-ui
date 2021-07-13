@@ -1,0 +1,19 @@
+import {Component, Inject, TemplateRef, ViewChild} from '@angular/core';
+import {TuiPreviewService} from '@taiga-ui/addon-preview';
+import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
+
+@Component({
+    ...
+})
+export class SomeComponent {
+    @ViewChild('preview')
+    readonly preview: TemplateRef<{}>;
+
+    constructor(
+        @Inject(TuiPreviewService) private readonly previewService: TuiPreviewService,
+    ) {}
+
+    show() {
+        this.previewService.open(this.preview).subscribe();
+    }
+}

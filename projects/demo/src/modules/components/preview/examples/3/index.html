@@ -1,0 +1,43 @@
+<button
+    tuiButton
+    size="m"
+    type="button"
+    class="tui-space_bottom-4"
+    (click)="show()"
+>
+    Показать превью
+</button>
+
+<ng-template #preview>
+    <tui-preview
+        [rotatable]="!(contentUnavailable$ | async)"
+        [zoomable]="!(contentUnavailable$ | async)"
+    >
+        <tui-preview-title>{{title$ | async}}</tui-preview-title>
+        <tui-preview-pagination
+            [lastIndex]="items.length - 1"
+            [index]="index$$.value"
+            (indexChange)="index$$.next($event)"
+        ></tui-preview-pagination>
+
+        <tui-preview-action
+            icon="tuiIconDownload"
+            title="Скачать"
+            (click)="download()"
+        ></tui-preview-action>
+
+        <!-- supports also [content] -->
+        <tui-preview-unavailable
+            *ngIf="contentUnavailable$ | async"
+        ></tui-preview-unavailable>
+
+        <img
+            *ngIf="imageSrc$ | async as src"
+            width="512"
+            height="512"
+            [src]="src"
+        />
+
+        <tui-preview-loading *ngIf="loading$ | async"></tui-preview-loading>
+    </tui-preview>
+</ng-template>

@@ -1,0 +1,10 @@
+import {TuiPreviewHostModule} from '@taiga-ui/addon-preview';
+
+@NgModule({
+    imports: [
+        ...
+        TuiPreviewHostModule
+    ],
+    ...
+})
+export class AppModule {}

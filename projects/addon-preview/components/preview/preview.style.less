@@ -1,0 +1,64 @@
+@import 'taiga-ui-local';
+
+:host {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+}
+
+.header {
+    position: absolute;
+    top: 16px;
+    display: flex;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+}
+
+.footer {
+    position: absolute;
+    bottom: 16px;
+    display: flex;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+.actions {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.title {
+    flex: 1;
+
+    @media @mobile {
+        display: none;
+    }
+}
+
+.close-button {
+    margin-right: 0;
+}
+
+.not-interactive-content {
+    /* stylelint-disable */
+    ::ng-deep > * {
+        pointer-events: none;
+    }
+    /* stylelint-enable */
+}
+
+.wrapper {
+    will-change: transform;
+}
+
+.transitive {
+    transition-duration: 0.3s;
+}

@@ -737,6 +737,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'components/preview',
+        loadChildren: () =>
+            import(`../components/preview/preview.module`).then(
+                m => m.ExampleTuiPreviewModule,
+            ),
+        data: {
+            title: 'Preview',
+        },
+    },
+    {
         path: 'components/svg',
         loadChildren: () =>
             import(`../components/svg/svg.module`).then(m => m.ExampleTuiSvgModule),
