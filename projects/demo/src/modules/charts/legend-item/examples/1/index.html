@@ -10,16 +10,41 @@
         <div>Total</div>
     </ng-template>
 
-    <div class="legend">
-        <tui-legend-item
-            *ngFor="let label of labels; let index = index"
-            class="item"
-            [color]="getColor(index)"
-            [text]="label"
-            [active]="isItemActive(index)"
-            (tuiHoveredChange)="onHover(index, $event)"
-        >
-            <tui-money [singleColor]="true" [value]="value[index]"></tui-money>
-        </tui-legend-item>
+    <div class="aside">
+        <div class="legend">
+            <tui-legend-item
+                *ngFor="let label of labels; let index = index"
+                class="item"
+                [color]="getColor(index)"
+                [text]="label"
+                [active]="isItemActive(index)"
+                [disabled]="checkIsDisabled(index)"
+                [withBorder]="itemsWithBorders"
+                (tuiHoveredChange)="onHover(index, $event)"
+            >
+                <tui-money
+                    [singleColor]="true"
+                    [value]="value[index]"
+                ></tui-money>
+            </tui-legend-item>
+        </div>
+
+        <div class="toggles tui-text_body-s">
+            <label class="toggle">
+                Enable all legend items
+                <tui-toggle
+                    [(ngModel)]="allItemsEnabled"
+                    [showIcons]="true"
+                ></tui-toggle>
+            </label>
+
+            <label class="toggle">
+                Legend items with borders
+                <tui-toggle
+                    [(ngModel)]="itemsWithBorders"
+                    [showIcons]="true"
+                ></tui-toggle>
+            </label>
+        </div>
     </div>
 </div>

@@ -1,0 +1,50 @@
+:host {
+    --tui-chart-0: var(--tui-support-01);
+    --tui-chart-1: var(--tui-support-02);
+    --tui-chart-2: var(--tui-support-03);
+    --tui-chart-3: var(--tui-support-04);
+    --tui-chart-4: var(--tui-support-05);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+}
+
+.aside {
+    margin-left: 2.8125rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    width: fit-content;
+    margin: 0 0.5rem 0.75rem 0;
+    padding-right: 0.5rem;
+
+    &__percent {
+        margin-right: -0.5rem;
+    }
+
+    &__close {
+        border-radius: 0 var(--tui-radius-m) var(--tui-radius-m) 0;
+
+        position: relative;
+        left: 0.75rem;
+
+        ::ng-deep & svg {
+            transform: rotate(45deg);
+        }
+    }
+}
+
+.toggle {
+    width: 13rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}

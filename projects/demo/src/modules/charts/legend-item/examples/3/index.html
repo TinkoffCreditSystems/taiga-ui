@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <tui-ring-chart
+        [value]="chartValues"
+        [content]="ringChartCenter"
+        size="l"
+        [(activeItemIndex)]="activeItemIndex"
+    ></tui-ring-chart>
+
+    <div class="aside">
+        <ng-container *ngFor="let label of labels; let index = index">
+            <tui-legend-item
+                class="item"
+                [color]="getColor(index)"
+                [customColorContent]="colorCheckbox"
+                [text]="label"
+                [active]="isItemActive(index)"
+                (tuiHoveredChange)="onHover(index, $event)"
+            >
+            </tui-legend-item>
+
+            <ng-template #colorCheckbox let-color>
+                <tui-checkbox
+                    [color]="color"
+                    [formControl]="checkboxesControls.controls[index]"
+                ></tui-checkbox>
+            </ng-template>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #ringChartCenter>
+    <p>{{getItemPercent(activeItemIndex) || 'Perfect pizza'}}</p>
+</ng-template>

@@ -16,3 +16,17 @@
     margin: 0 0.5rem;
     font-weight: normal;
 }
+
+::ng-deep tui-wrapper[data-appearance='legend-item-no-border'] {
+    background: transparent;
+    color: var(--tui-text-01);
+
+    &[data-state='hovered'],
+    &[data-state='pressed'] {
+        color: var(--tui-text-02);
+    }
+
+    &[data-state='disabled'] {
+        opacity: var(--tui-disabled-opacity);
+    }
+}

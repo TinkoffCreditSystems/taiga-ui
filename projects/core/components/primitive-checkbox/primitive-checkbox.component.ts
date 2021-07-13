@@ -5,7 +5,7 @@ import {
     Inject,
     Input,
 } from '@angular/core';
-import {TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
+import {isPresent, TuiContextWithImplicit, tuiDefaultProp, tuiPure} from '@taiga-ui/cdk';
 import {TuiSizeL} from '@taiga-ui/core/types';
 import {PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import {CheckboxOptions, TUI_CHECKBOX_OPTIONS} from './checkbox-options';
@@ -46,6 +46,10 @@ export class TuiPrimitiveCheckboxComponent {
     @tuiDefaultProp()
     invalid = false;
 
+    @Input()
+    @tuiDefaultProp()
+    color: string | null = null;
+
     @Input('value')
     @tuiDefaultProp()
     set valueSetter(value: boolean | null) {
@@ -79,6 +83,14 @@ export class TuiPrimitiveCheckboxComponent {
 
     get context(): TuiContextWithImplicit<TuiSizeL> {
         return this.getContext(this.size);
+    }
+
+    get backgroundColor(): string | null {
+        if (this.value !== false && isPresent(this.color)) {
+            return this.color;
+        }
+
+        return null;
     }
 
     @tuiPure

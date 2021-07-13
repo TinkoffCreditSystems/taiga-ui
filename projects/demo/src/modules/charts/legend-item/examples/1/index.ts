@@ -12,6 +12,8 @@ import {encapsulation} from '../../../../../view-encapsulation';
 })
 export class TuiLegendItemExample1 {
     activeItemIndex: number | null = null;
+    allItemsEnabled = true;
+    itemsWithBorders = true;
 
     readonly value = [13769, 12367, 10172, 3018, 2592];
     readonly sum = sum(...this.value);
@@ -21,11 +23,19 @@ export class TuiLegendItemExample1 {
         return this.activeItemIndex === index;
     }
 
+    checkIsDisabled(index: number): boolean {
+        return !this.allItemsEnabled && index % 2 !== 0;
+    }
+
     onHover(index: number, hovered: boolean) {
-        this.activeItemIndex = hovered ? index : null;
+        this.activeItemIndex = hovered && !this.checkIsDisabled(index) ? index : null;
     }
 
     getColor(index: number): string {
+        if (this.checkIsDisabled(index)) {
+            return 'var(--tui-chart-disabled)';
+        }
+
         return `var(--tui-chart-${index})`;
     }
 }

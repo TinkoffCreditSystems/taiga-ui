@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <div>
+        <h5 class="title">How programmers<br />spend their time</h5>
+        <tui-pie-chart
+            size="l"
+            [value]="value"
+            [(activeItemIndex)]="activeItemIndex"
+        ></tui-pie-chart>
+    </div>
+
+    <div class="aside">
+        <ng-container *ngFor="let label of labels; let index = index">
+            <tui-legend-item
+                *ngIf="value[index]"
+                class="item"
+                [color]="getColor(index)"
+                [text]="label"
+                [active]="isItemActive(index)"
+                [withBorder]="itemsWithBorders"
+                (tuiHoveredChange)="onHover(index, $event)"
+            >
+                <span class="item__percent">{{getItemPercent(index)}}</span>
+                <button
+                    tuiIconButton
+                    class="item__close"
+                    size="s"
+                    icon="tuiIconPlus"
+                    [appearance]="closeButtonAppearance"
+                    shape="square"
+                    (click)="deleteItem(index)"
+                    (tuiHoveredChange)="onCloseItemHover($event)"
+                ></button>
+            </tui-legend-item>
+        </ng-container>
+
+        <label class="toggle tui-text_body-s">
+            Mobile version
+            <tui-toggle
+                [(ngModel)]="mobileVersion"
+                [showIcons]="true"
+            ></tui-toggle>
+        </label>
+
+        <label class="toggle tui-text_body-s">
+            Legend items with borders
+            <tui-toggle
+                [(ngModel)]="itemsWithBorders"
+                [showIcons]="true"
+            ></tui-toggle>
+        </label>
+    </div>
+</div>

@@ -1,4 +1,5 @@
 :host {
+    --tui-chart-disabled: var(--tui-neutral-bg);
     --tui-chart-0: #c779d0;
     --tui-chart-1: #feac5e;
     --tui-chart-2: #ff5f6d;
@@ -7,14 +8,33 @@
 }
 
 .wrapper {
+    position: relative;
     display: flex;
     align-items: center;
 }
 
-.legend {
+.aside {
     margin-left: 2.8125rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .item {
     margin: 0 0.5rem 0.75rem 0;
+}
+
+.toggles {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+
+    .toggle {
+        width: 13rem;
+        display: flex;
+        justify-content: space-between;
+
+        &:not(:last-child) {
+            margin-bottom: 0.5rem;
+        }
+    }
 }

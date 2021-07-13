@@ -15,11 +15,36 @@
         >
             <tui-legend-item-example-1></tui-legend-item-example-1>
         </tui-doc-example>
+
+        <tui-doc-example
+            id="pie-close-btns"
+            i18n-heading
+            heading="With a pie chart and close buttons"
+            [content]="example2"
+        >
+            <tui-legend-item-example-2></tui-legend-item-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="ring-checkbox"
+            i18n-heading
+            heading="With a ring chart and checkboxes"
+            [content]="example3"
+        >
+            <tui-legend-item-example-3></tui-legend-item-example-3>
+        </tui-doc-example>
     </ng-template>
 
     <ng-template pageTab>
         <tui-doc-demo>
-            <tui-legend-item [active]="active" [color]="color" [text]="text">
+            <tui-legend-item
+                [active]="active"
+                [color]="color"
+                [text]="text"
+                [disabled]="disabled"
+                [withBorder]="withBorder"
+                [customColorContent]="customColorContent"
+            >
                 <tui-money [value]="123456" [singleColor]="true"></tui-money>
             </tui-legend-item>
             <p i18n>
@@ -46,6 +71,18 @@
             >
                 Indicator color
             </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="customColorContent"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+                [documentationPropertyValues]="['', colorCheckbox]"
+                [(documentationPropertyValue)]="customColorContent"
+            >
+                Custom content of color indicator
+            </ng-template>
+
             <ng-template
                 i18n
                 documentationPropertyName="value"
@@ -54,6 +91,26 @@
                 [(documentationPropertyValue)]="text"
             >
                 Text inside
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="disable"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="disabled"
+            >
+                Disabled state
+            </ng-template>
+
+            <ng-template
+                i18n
+                documentationPropertyName="withBorder"
+                documentationPropertyMode="input"
+                documentationPropertyType="boolean"
+                [(documentationPropertyValue)]="withBorder"
+            >
+                Show border around item
             </ng-template>
         </tui-doc-documentation>
     </ng-template>
@@ -83,3 +140,10 @@
         </ol>
     </ng-template>
 </tui-doc-page>
+
+<ng-template #colorCheckbox let-color>
+    <tui-primitive-checkbox
+        [color]="color"
+        value="true"
+    ></tui-primitive-checkbox>
+</ng-template>

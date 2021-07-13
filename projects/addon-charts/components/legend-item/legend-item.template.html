@@ -2,11 +2,22 @@
     tuiButton
     type="button"
     size="s"
-    appearance="whiteblock"
     class="button"
-    [pseudoHovered]="active || null"
+    [appearance]="buttonAppearance"
+    [pseudoHovered]="pseudoHovered"
+    [disabled]="disabled"
 >
-    <span class="dot" [style.background]="computedColor"></span>
+    <ng-container *ngIf="customColorContent; else colorDot">
+        <span
+            polymorpheus-outlet
+            [content]="customColorContent"
+            [context]="colorContext"
+        ></span>
+    </ng-container>
     <span class="text">{{text}}</span>
     <ng-content></ng-content>
 </button>
+
+<ng-template #colorDot>
+    <span class="dot" [style.background]="computedColor"></span>
+</ng-template>

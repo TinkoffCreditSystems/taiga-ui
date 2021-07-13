@@ -41,6 +41,10 @@ export class TuiCheckboxComponent
     @tuiDefaultProp()
     size: TuiSizeL = this.options.size;
 
+    @Input()
+    @tuiDefaultProp()
+    color: string | null = null;
+
     @ViewChild('focusableElement')
     private readonly focusableElement?: ElementRef<HTMLInputElement>;
 
