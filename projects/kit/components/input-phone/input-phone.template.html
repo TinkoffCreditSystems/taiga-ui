@@ -24,6 +24,7 @@
         (drop)="onDrop($event)"
         (keydown.backspace)="onBackspace($event)"
         (paste.prevent)="onPaste($event)"
+        [tuiTextfieldCleaner]="canClean"
     >
         <ng-content></ng-content>
     </tui-primitive-textfield>

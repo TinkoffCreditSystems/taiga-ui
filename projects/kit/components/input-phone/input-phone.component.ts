@@ -30,10 +30,12 @@ import {
 import {
     formatPhone,
     TUI_DATA_LIST_HOST,
+    TUI_TEXTFIELD_CLEANER,
     TuiDataListDirective,
     TuiDataListHost,
     TuiHostedDropdownComponent,
     TuiPrimitiveTextfieldComponent,
+    TuiTextfieldCleanerDirective,
     TuiTextMaskOptions,
 } from '@taiga-ui/core';
 import {Observable} from 'rxjs';
@@ -129,6 +131,8 @@ export class TuiInputPhoneComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(SELECTION_STREAM)
         selection$: Observable<unknown>,
+        @Inject(TUI_TEXTFIELD_CLEANER)
+        private readonly textfieldCleaner: TuiTextfieldCleanerDirective,
     ) {
         super(control, changeDetectorRef);
 
@@ -162,6 +166,10 @@ export class TuiInputPhoneComponent
 
     get canOpen(): boolean {
         return !this.computedDisabled && !this.readOnly && !!this.datalist;
+    }
+
+    get canClean(): boolean {
+        return this.nativeValue !== this.countryCode && this.textfieldCleaner.cleaner;
     }
 
     onHovered(hovered: boolean) {
@@ -209,6 +217,8 @@ export class TuiInputPhoneComponent
     }
 
     onValueChange(value: string) {
+        value = value === '' ? this.countryCode : value;
+
         const parsed = isText(value)
             ? value
             : value.replace(NON_PLUS_AND_DIGITS_REGEX, '');
