@@ -1,5 +1,5 @@
 export interface TuiDocPageBase {
-    readonly section: string;
+    readonly section?: string;
     readonly title: string;
 }
 
