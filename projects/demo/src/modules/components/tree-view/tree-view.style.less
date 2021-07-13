@@ -1,0 +1,33 @@
+@import 'taiga-ui-local';
+
+.tooltip {
+    position: relative;
+
+    &:hover .bubble {
+        opacity: 1;
+    }
+}
+
+.bubble {
+    .transition(opacity);
+    position: absolute;
+    left: 50px;
+    bottom: 30px;
+    width: 250px;
+    background: var(--tui-text-01);
+    color: var(--tui-base-01);
+    border-radius: 4px;
+    padding: 10px;
+    opacity: 0;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: -15px;
+        border-top: 15px solid var(--tui-text-01);
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        transform: translate(-10px, 0);
+    }
+}

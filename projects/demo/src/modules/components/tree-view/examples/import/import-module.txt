@@ -1,0 +1,10 @@
+import {TuiTreeViewModule} from '@taiga-ui/kit';
+
+...
+
+@NgModule({
+    imports: [
+        ...
+        TuiTreeViewModule
+    ],
+...

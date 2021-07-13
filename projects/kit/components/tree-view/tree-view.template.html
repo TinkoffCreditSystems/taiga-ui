@@ -1,0 +1,14 @@
+<ng-container *ngIf="isArray; else itemView">
+    <tree-view
+        *ngFor="let item of value"
+        [content]="content"
+        [value]="item"
+    ></tree-view>
+</ng-container>
+<ng-template #itemView>
+    <div
+        polymorpheus-outlet
+        [content]="content || value"
+        [context]="calculateContext(value)"
+    ></div>
+</ng-template>

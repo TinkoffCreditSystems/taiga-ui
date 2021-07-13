@@ -1,0 +1,42 @@
+<tui-doc-page header="TreeView" package="KIT" type="components">
+    <ng-template pageTab>
+        <p i18n>
+            Component that shows multidimensional arrays recursively as a tree
+            structure
+        </p>
+
+        <tui-doc-example
+            id="base"
+            i18n-heading
+            heading="Basic"
+            [content]="example1"
+        >
+            <tui-expand-example-1></tui-expand-example-1>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab="Setup">
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiTreeViewModule</code> into a module where
+                    you want to use our component
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>
