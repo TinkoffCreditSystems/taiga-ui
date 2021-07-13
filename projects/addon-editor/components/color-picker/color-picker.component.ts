@@ -36,6 +36,10 @@ export class TuiColorPickerComponent {
         this.point = [s, 1 - v / 255];
     }
 
+    @Input()
+    @tuiDefaultProp()
+    isAlphaEnabled = true;
+
     @Output()
     readonly colorChange = new EventEmitter<[number, number, number, number]>();
 

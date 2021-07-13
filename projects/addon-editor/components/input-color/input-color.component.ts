@@ -11,6 +11,11 @@ import {
 } from '@angular/core';
 import {NgControl} from '@angular/forms';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {
+    COLOR_OPTIONS_CONTROLLER_PROVIDER,
+    TUI_COLOR_OPTIONS_WATCHED_CONTROLLER,
+    TuiColorOptionsControllerDirective,
+} from '@taiga-ui/addon-editor/directives/color-options-controller';
 import {getGradientData, parseGradient, toGradient} from '@taiga-ui/addon-editor/utils';
 import {
     AbstractTuiControl,
@@ -41,6 +46,7 @@ export function longDropdownControllerFactory(
     styleUrls: ['./input-color.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
+        COLOR_OPTIONS_CONTROLLER_PROVIDER,
         {
             provide: TUI_DROPDOWN_CONTROLLER,
             deps: [[new Optional(), TuiDropdownControllerDirective]],
@@ -70,6 +76,8 @@ export class TuiInputColorComponent
         control: NgControl | null,
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(DomSanitizer) private readonly domSanitizer: DomSanitizer,
+        @Inject(TUI_COLOR_OPTIONS_WATCHED_CONTROLLER)
+        readonly controller: TuiColorOptionsControllerDirective,
     ) {
         super(control, changeDetectorRef);
     }

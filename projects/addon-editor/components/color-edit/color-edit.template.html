@@ -49,6 +49,8 @@
     ></tui-input-count>
 </ng-template>
 <tui-input-count
+    *ngIf="isAlphaEnabled"
+    automation-id="tui-input-count__alpha"
     class="opacity tui-group__auto-width-item"
     postfix="%"
     tuiTextfieldSize="m"

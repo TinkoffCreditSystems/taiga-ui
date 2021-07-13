@@ -7,7 +7,7 @@ import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
 //
 // SETUP CODE
 const COMMA = '\\s*,\\s*'; // Allow space around comma.
-const HEX = '#(?:[a-f0-9]{6}|[a-f0-9]{3})'; // 3 or 6 character form
+const HEX = '#(?:[a-f0-9]{8}|[a-f0-9]{6}|[a-f0-9]{3})'; // 3 or 6 character form
 const RGB = '\\(\\s*(?:\\d{1,3}\\s*,\\s*){2}\\d{1,3}\\s*\\)'; // "(1, 2, 3)"
 const RGBA = '\\(\\s*(?:\\d{1,3}\\s*,\\s*){2}\\d{1,3}\\s*,\\s*\\d*\\.?\\d+\\)'; // "(1, 2, 3, 4)"
 const VALUE = '(?:[+-]?\\d*\\.?\\d+)(?:%|[a-z]+)?'; // ".9", "-5px", "100%".

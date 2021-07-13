@@ -12,7 +12,8 @@
             "@taiga-ui/core/*": ["./projects/core/*"],
             "@taiga-ui/kit": ["./projects/kit/index"],
             "@taiga-ui/kit/*": ["./projects/kit/*"],
-            "@taiga-ui/addon-editor/*": ["./projects/addon-editor/*"]
+            "@taiga-ui/addon-editor/*": ["./projects/addon-editor/*"],
+            "@taiga-ui/testing": ["./projects/testing/src/public-api.ts"]
         }
     },
     "files": ["test.ts"],

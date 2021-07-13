@@ -1,4 +1,10 @@
-<tui-hosted-dropdown #dropdown class="select" [content]="menu">
+<tui-hosted-dropdown
+    *ngIf="controller.isModeEnabled"
+    #dropdown
+    automation-id="tui-hosted-dropdown__mode"
+    class="select"
+    [content]="menu"
+>
     <button tuiButton appearance="" size="s" type="button" [iconRight]="arrow">
         {{currentMode}}
     </button>
@@ -60,6 +66,7 @@
     </div>
 </ng-container>
 <tui-color-picker
+    [isAlphaEnabled]="controller.isAlphaEnabled"
     [color]="currentColor"
     (colorChange)="onColorChange($event)"
 ></tui-color-picker>
@@ -67,6 +74,7 @@
     *ngIf="!isGradient"
     tuiGroup
     class="edit"
+    [isAlphaEnabled]="controller.isAlphaEnabled"
     [color]="color"
     (colorChange)="onColorChange($event)"
 ></tui-color-edit>

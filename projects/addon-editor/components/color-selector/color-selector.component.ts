@@ -7,9 +7,20 @@ import {
     Output,
 } from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import {
+    COLOR_OPTIONS_CONTROLLER_PROVIDER,
+    TUI_COLOR_OPTIONS_WATCHED_CONTROLLER,
+    TuiColorOptionsControllerDirective,
+} from '@taiga-ui/addon-editor/directives/color-options-controller';
 import {TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES} from '@taiga-ui/addon-editor/tokens';
 import {TuiGradientDirection} from '@taiga-ui/addon-editor/types';
-import {getGradientData, parseColor, parseGradient} from '@taiga-ui/addon-editor/utils';
+import {
+    getGradientData,
+    parseColor,
+    parseGradient,
+    rgbaToHexA,
+    rgbToHex,
+} from '@taiga-ui/addon-editor/utils';
 import {tuiDefaultProp, tuiPure, tuiRequiredSetter} from '@taiga-ui/cdk';
 import {TuiHostedDropdownComponent} from '@taiga-ui/core';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
@@ -36,7 +47,10 @@ const ICONS: Record<TuiGradientDirection, string> = {
     templateUrl: './color-selector.template.html',
     styleUrls: ['./color-selector.style.less'],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER],
+    providers: [
+        COLOR_OPTIONS_CONTROLLER_PROVIDER,
+        LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER,
+    ],
 })
 export class TuiColorSelectorComponent {
     @Input()
@@ -76,6 +90,8 @@ export class TuiColorSelectorComponent {
     constructor(
         @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
         @Inject(TUI_EDITOR_COLOR_SELECTOR_MODE_NAMES) readonly modes: [string, string],
+        @Inject(TUI_COLOR_OPTIONS_WATCHED_CONTROLLER)
+        readonly controller: TuiColorOptionsControllerDirective,
     ) {}
 
     get palette(): Map<string, string> {
@@ -96,6 +112,23 @@ export class TuiColorSelectorComponent {
 
     get isGradient(): boolean {
         return this.currentMode === this.modes[1];
+    }
+
+    getStringFromColor(color: [number, number, number, number]): string {
+        const isAlphaEnabled = this.controller.isAlphaEnabled;
+        const isHexOutput = this.controller.outputFormat === 'hex';
+
+        if (isHexOutput) {
+            return `#${
+                isAlphaEnabled
+                    ? rgbaToHexA(...color)
+                    : rgbToHex(...(color.slice(0, 3) as [number, number, number]))
+            }`;
+        } else {
+            return `${isAlphaEnabled ? 'rgba' : 'rgb'}(${color
+                .slice(0, isAlphaEnabled ? 4 : 3)
+                .join(', ')})`;
+        }
     }
 
     getIcon(direction: TuiGradientDirection): string {
@@ -124,7 +157,7 @@ export class TuiColorSelectorComponent {
         dropdown.open = false;
         this.updateColor(
             mode === this.modes[0]
-                ? `rgba(${this.color.join(', ')})`
+                ? this.getStringFromColor(this.color)
                 : this.getGradient(this.direction),
         );
     }
@@ -135,7 +168,7 @@ export class TuiColorSelectorComponent {
 
     onColorChange(color: [number, number, number, number]) {
         if (!this.isGradient) {
-            this.updateColor(`rgba(${color.join(', ')})`);
+            this.updateColor(this.getStringFromColor(color));
 
             return;
         }
@@ -170,7 +203,7 @@ export class TuiColorSelectorComponent {
     private getGradient(direction: TuiGradientDirection): string {
         return `linear-gradient(${direction}, ${[...this.stopsKeys]
             .sort()
-            .map(key => `rgba(${this.getStop(key).join(', ')}) ${key * 100}%`)
+            .map(key => `${this.getStringFromColor(this.getStop(key))} ${key * 100}%`)
             .join(', ')})`;
     }
 

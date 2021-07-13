@@ -1,0 +1,39 @@
+<tui-input-color
+    class="b-form tui-space_vertical-2"
+    [(ngModel)]="color"
+    [tuiColorOptionsModeEnabled]="false"
+>
+    Without modes
+</tui-input-color>
+<tui-input-color
+    class="b-form"
+    [(ngModel)]="colorGradient"
+    [tuiColorOptionsAlphaEnabled]="false"
+>
+    Without alpha
+</tui-input-color>
+<tui-input-color
+    class="b-form tui-space_vertical-2"
+    [(ngModel)]="colorHex"
+    [tuiColorOptionsOutputFormat]="'hex'"
+>
+    Output format hex
+</tui-input-color>
+<tui-input-color
+    class="b-form tui-space_bottom-2"
+    [(ngModel)]="colorHexWithoutAlpha"
+    [tuiColorOptionsAlphaEnabled]="false"
+    [tuiColorOptionsOutputFormat]="'hex'"
+>
+    Output format hex without alpha
+</tui-input-color>
+<tui-input-color
+    class="b-form"
+    [(ngModel)]="colorMask"
+    [tuiColorOptionsModeEnabled]="false"
+    [tuiColorOptionsAlphaEnabled]="false"
+    [tuiColorOptionsOutputFormat]="'hex'"
+    [tuiColorOptionsInputMask]="hexMask"
+>
+    With hex mask
+</tui-input-color>

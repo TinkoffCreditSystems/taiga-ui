@@ -8,6 +8,7 @@ import {
     TuiColorSelectorModule,
     TuiInputColorModule,
 } from '@taiga-ui/addon-editor';
+import {TuiColorOptionsControllerModule} from '@taiga-ui/addon-editor/directives/color-options-controller';
 import {TuiActiveZoneModule} from '@taiga-ui/cdk';
 import {
     TuiButtonModule,
@@ -18,6 +19,7 @@ import {
 import {ExampleTuiColorPickerComponent} from './color-picker.component';
 import {TuiColorPickerExample1} from './examples/1';
 import {TuiColorPickerExample2} from './examples/2';
+import {TuiColorPickerExample3} from './examples/3';
 
 @NgModule({
     imports: [
@@ -30,6 +32,7 @@ import {TuiColorPickerExample2} from './examples/2';
         TuiDropdownControllerModule,
         TuiInputColorModule,
         TuiTextfieldControllerModule,
+        TuiColorOptionsControllerModule,
         TuiAddonDocModule,
         RouterModule.forChild(generateRoutes(ExampleTuiColorPickerComponent)),
         FormsModule,
@@ -38,6 +41,7 @@ import {TuiColorPickerExample2} from './examples/2';
         ExampleTuiColorPickerComponent,
         TuiColorPickerExample1,
         TuiColorPickerExample2,
+        TuiColorPickerExample3,
     ],
     exports: [ExampleTuiColorPickerComponent],
 })

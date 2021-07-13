@@ -20,6 +20,10 @@ export class TuiColorEditComponent {
     @tuiDefaultProp()
     color: [number, number, number, number] = [0, 0, 0, 1];
 
+    @Input()
+    @tuiDefaultProp()
+    isAlphaEnabled = true;
+
     @Output()
     readonly colorChange = new EventEmitter<[number, number, number, number]>();
 

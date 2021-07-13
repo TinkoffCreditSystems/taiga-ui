@@ -11,8 +11,13 @@
         (valueChange)="onHueChange($event)"
     ></tui-linear-picker>
 </div>
-<div class="wrapper wrapper_opacity" [style.background]="gradient">
+<div
+    *ngIf="isAlphaEnabled"
+    class="wrapper wrapper_opacity"
+    [style.background]="gradient"
+>
     <tui-linear-picker
+        automation-id="tui-linear-picker__alpha"
         class="opacity"
         [value]="opacity"
         (valueChange)="onOpacityChange($event)"

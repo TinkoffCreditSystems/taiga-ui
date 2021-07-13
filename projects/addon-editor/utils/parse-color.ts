@@ -16,14 +16,19 @@ export function parseColor(color: string): [number, number, number, number] {
         return array.concat(1) as [number, number, number, number];
     }
 
-    const matches = stripped.match(new RegExp('(.{' + stripped.length / 3 + '})', 'g'));
+    const symbolsCount = stripped.length === 8 ? 2 : stripped.length / 3;
+    const matches = stripped.match(new RegExp('(.{' + symbolsCount + '})', 'g'));
 
     if (!matches) {
         return DEFAULT;
     }
 
-    const parsed = matches.map(char =>
-        parseInt(stripped.length % 2 ? char + char : char, 16),
+    const parsed = matches.map((char, index) =>
+        matches.length > 3 && index === matches.length - 1
+            ? Math.round(
+                  (parseInt(stripped.length % 2 ? char + char : char, 16) / 255) * 100,
+              ) / 100
+            : parseInt(stripped.length % 2 ? char + char : char, 16),
     );
 
     return [
