@@ -67,9 +67,9 @@ export abstract class AbstractTuiDropdown
     abstract refresh$: Observable<unknown>;
 
     constructor(
-        private readonly componentFactoryResolver: ComponentFactoryResolver,
-        private readonly injector: Injector,
-        private readonly portalService: TuiPortalService,
+        protected readonly componentFactoryResolver: ComponentFactoryResolver,
+        protected readonly injector: Injector,
+        protected readonly portalService: TuiPortalService,
         protected readonly elementRef: ElementRef<HTMLElement>,
         readonly activeZone: TuiActiveZoneDirective | null,
     ) {}

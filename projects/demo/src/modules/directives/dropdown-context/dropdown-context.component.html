@@ -1,0 +1,163 @@
+<tui-doc-page
+    i18n-header
+    header="DropdownContext"
+    package="KIT"
+    type="directives"
+>
+    <ng-template pageTab>
+        <p i18n>
+            <code>tuiDropdownContext</code> allows to show custom right click
+            context dropdown.
+        </p>
+        <p i18n>Use <strong>Arrow Up/Down</strong> to focus closest element.</p>
+        <p i18n>Use <strong>Esc</strong> to close dropdown.</p>
+
+        <tui-doc-example
+            id="basic"
+            i18n-heading
+            heading="Basic"
+            [content]="exampleBasic"
+        >
+            <tui-dropdown-context-example-1></tui-dropdown-context-example-1>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="contextMenu"
+            i18n-heading
+            heading="Context menu"
+            [content]="exampleContextMenu"
+        >
+            <tui-dropdown-context-example-2></tui-dropdown-context-example-2>
+        </tui-doc-example>
+
+        <tui-doc-example
+            id="reportMistakeForm"
+            i18n-heading
+            heading="Report mistake form"
+            [content]="exampleReportMistakeForm"
+        >
+            <tui-dropdown-context-example-3></tui-dropdown-context-example-3>
+        </tui-doc-example>
+    </ng-template>
+
+    <ng-template pageTab>
+        <tui-doc-demo>
+            <p
+                i18n
+                [tuiDropdownContext]="dropdownContent"
+                [tuiDropdownMinHeight]="tuiDropdownMinHeight"
+                [tuiDropdownMaxHeight]="tuiDropdownMaxHeight"
+                [tuiDropdownAlign]="tuiDropdownAlign"
+                [tuiDropdownDirection]="tuiDropdownDirection"
+                [tuiDropdownLimitWidth]="tuiDropdownLimitWidth"
+            >
+                Right click on me to <strong>see a dropdown</strong>
+            </p>
+            <ng-template #dropdownContent let-close="close">
+                <div i18n class="dropdown">
+                    <p>Use Arrow Up/Down to navigate to button.</p>
+                    <p>Use Esc to close dropdown.</p>
+
+                    <button tuiButton type="button" (click)="close()">
+                        Close me
+                    </button>
+                </div>
+            </ng-template>
+        </tui-doc-demo>
+        <tui-doc-documentation>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownContext"
+                documentationPropertyMode="input"
+                documentationPropertyType="PolymorpheusContent"
+            >
+                Content
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownContextData"
+                documentationPropertyMode="input"
+                documentationPropertyType="T extends object | null"
+            >
+                Additional data which passed as
+                <code>context.$implicit</code> to input property
+                <strong>tuiDropdownContext</strong> (PolymorpheusContent)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownAlign"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiHorizontalDirection"
+                [documentationPropertyValues]="alignVariants"
+                [(documentationPropertyValue)]="tuiDropdownAlign"
+            >
+                Align of dropdown (does not work together with
+                <code>limitWidth === 'fixed'</code>)
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownDirection"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiVerticalDirection | null"
+                [documentationPropertyValues]="dropdownDirectionVariants"
+                [(documentationPropertyValue)]="tuiDropdownDirection"
+            >
+                Set a vertical direction of dropdown
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownLimitWidth"
+                documentationPropertyMode="input"
+                documentationPropertyType="TuiDropdownWidthT"
+                [documentationPropertyValues]="tuiDropdownLimitWidthVariants"
+                [(documentationPropertyValue)]="tuiDropdownLimitWidth"
+            >
+                Limit dropdown width
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownMinHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="tuiDropdownMinHeight"
+            >
+                Minimum height to calculate that dropdown fits to setted
+                <code>tuiDropdownDirection</code>
+            </ng-template>
+            <ng-template
+                i18n
+                documentationPropertyName="tuiDropdownMaxHeight"
+                documentationPropertyMode="input"
+                documentationPropertyType="number"
+                [(documentationPropertyValue)]="tuiDropdownMaxHeight"
+            >
+                Maximum height of dropdown
+            </ng-template>
+        </tui-doc-documentation>
+    </ng-template>
+
+    <ng-template pageTab>
+        <ol class="b-demo-steps">
+            <li>
+                <p i18n>
+                    Import <code>TuiDropdownContextModule</code> into a module
+                    where you want to use our directive
+                </p>
+
+                <tui-doc-code
+                    filename="myComponent.module.ts"
+                    [code]="exampleImportModule"
+                ></tui-doc-code>
+            </li>
+
+            <li>
+                <p i18n>Add to the template:</p>
+
+                <tui-doc-code
+                    filename="myComponent.template.html"
+                    [code]="exampleInsertTemplate"
+                ></tui-doc-code>
+            </li>
+        </ol>
+    </ng-template>
+</tui-doc-page>

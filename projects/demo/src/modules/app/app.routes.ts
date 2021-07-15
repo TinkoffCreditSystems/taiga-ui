@@ -1040,6 +1040,16 @@ export const ROUTES = [
         },
     },
     {
+        path: 'directives/dropdown-context',
+        loadChildren: () =>
+            import('../directives/dropdown-context/dropdown-context.module').then(
+                m => m.ExampleTuiDropdownContextModule,
+            ),
+        data: {
+            title: 'DropdownContext',
+        },
+    },
+    {
         path: 'directives/dropdown-selection',
         loadChildren: () =>
             import(`../directives/dropdown-selection/dropdown-selection.module`).then(

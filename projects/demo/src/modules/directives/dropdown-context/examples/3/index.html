@@ -1,0 +1,20 @@
+<span [tuiDropdownContext]="reportForm" tuiDropdownContextData="currentTextId">
+    Some text with mistake. Make right click on it.
+</span>
+
+<ng-template #reportForm let-id let-close="close">
+    <form [formGroup]="testForm" class="container">
+        <tui-text-area formControlName="reportText">
+            Have you found a mistake ? Write about it!
+        </tui-text-area>
+
+        <button
+            class="button"
+            type="button"
+            tuiButton
+            (click)="report(id); close()"
+        >
+            SEND IT
+        </button>
+    </form>
+</ng-template>

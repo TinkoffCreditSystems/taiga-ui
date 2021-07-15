@@ -1,0 +1,37 @@
+<p>Make right click on any table's row.</p>
+
+<table class="tui-table">
+    <tbody>
+        <tr class="tui-table__tr tui-table__tr_hover_disabled">
+            <th *ngFor="let column of tableColumns" class="tui-table__th">
+                {{column}}
+            </th>
+        </tr>
+        <tr
+            *ngFor="let item of tableData"
+            class="tui-table__tr"
+            [tuiDropdownContext]="contextMenu"
+            [tuiDropdownContextData]="item"
+        >
+            <td
+                *ngFor="let value of getObjectValues(item)"
+                class="tui-table__td"
+            >
+                {{value}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<ng-template #contextMenu let-data let-close="close">
+    <tui-data-list class="context-menu" role="menu">
+        <button
+            *ngFor="let item of menuItems"
+            tuiOption
+            (click)="printToConsole(item.title, data); close()"
+        >
+            {{item.title}}
+            <tui-svg class="icon" [src]="item.iconName"></tui-svg>
+        </button>
+    </tui-data-list>
+</ng-template>
