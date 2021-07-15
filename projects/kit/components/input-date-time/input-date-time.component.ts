@@ -143,24 +143,15 @@ export class TuiInputDateTimeComponent
     }
 
     get computedValue(): string {
-        const {value, nativeValue, focused, touched} = this;
+        const {value, nativeValue, timeMode} = this;
         const [date, time] = value;
+        const hasTimeInputChars = nativeValue.length > this.dateFiller.length;
 
-        if (
-            (date && !nativeValue) ||
-            (date && nativeValue.length === this.dateFiller.length) ||
-            (date && time)
-        ) {
-            return `${date.toString()}${DATE_TIME_SEPARATOR}${
-                time ? time.toString(this.timeMode) : ''
-            }`;
-        }
-
-        if (touched || focused) {
+        if (!date || (!time && hasTimeInputChars)) {
             return nativeValue;
         }
 
-        return date !== null ? date.toString() : '';
+        return this.getDateTimeString(date, time, {timeMode});
     }
 
     get calendarValue(): TuiDay | null {
@@ -301,7 +292,7 @@ export class TuiInputDateTimeComponent
     private updateNativeValue(day: TuiDay) {
         const time = this.nativeValue.split(DATE_TIME_SEPARATOR)[1] || '';
 
-        this.nativeValue = `${day.toString()}${DATE_TIME_SEPARATOR}${time}`;
+        this.nativeValue = this.getDateTimeString(day, time);
     }
 
     @tuiPure
@@ -320,5 +311,16 @@ export class TuiInputDateTimeComponent
             ),
             guide: false,
         };
+    }
+
+    @tuiPure
+    private getDateTimeString(
+        date: TuiDay,
+        time: TuiTime | string | null,
+        {timeMode = 'HH:MM'}: {timeMode?: TuiTimeMode} = {},
+    ): string {
+        const timeString = time instanceof TuiTime ? time.toString(timeMode) : time || '';
+
+        return `${date.toString()}${DATE_TIME_SEPARATOR}${timeString}`;
     }
 }

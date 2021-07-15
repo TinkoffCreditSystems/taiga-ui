@@ -7,6 +7,7 @@
 >
     <tui-primitive-textfield
         class="textfield"
+        automation-id="tui-input-date-time__textfield"
         tuiValueAccessor
         [pseudoFocused]="pseudoFocused"
         [pseudoHovered]="pseudoHovered"
@@ -28,6 +29,7 @@
     <ng-template #dropdown="polymorpheus" polymorpheus>
         <tui-calendar
             tuiPreventDefault="mousedown"
+            automation-id="tui-input-date-time__calendar"
             [min]="min"
             [max]="max"
             [disabledItemHandler]="disabledItemHandler"
