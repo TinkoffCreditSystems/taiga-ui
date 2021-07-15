@@ -1,4 +1,5 @@
 import {InjectionToken} from '@angular/core';
+import {TuiDateMode} from '@taiga-ui/cdk';
 import {extractI18n, TuiCountryIsoCode} from '@taiga-ui/i18n';
 import {Observable} from 'rxjs';
 
@@ -36,6 +37,13 @@ export const TUI_PLUS_MINUS_TEXTS = new InjectionToken(`plus and minus i18n text
 export const TUI_TIME_TEXTS = new InjectionToken(`time i18n texts`, {
     factory: extractI18n('time'),
 });
+
+export const TUI_DATE_TEXTS = new InjectionToken<Observable<Record<TuiDateMode, string>>>(
+    'date format i18n texts',
+    {
+        factory: extractI18n('dateTexts'),
+    },
+);
 
 export const TUI_DIGITAL_INFORMATION_UNITS = new InjectionToken(
     `short bytes, kilobytes and megabytes i18n texts`,

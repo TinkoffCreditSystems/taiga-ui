@@ -13,6 +13,9 @@ export const TUI_SPANISH_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS': 'HH:MM:SS',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
+    dateTexts: {
+        'dd.mm.yyyy': 'dd.mm.yyyy',
+    },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Mostrar contraseña', 'Ocultar contraseña'],
     copyTexts: ['Copiar', 'Copiado'],

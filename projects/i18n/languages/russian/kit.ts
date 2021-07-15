@@ -13,6 +13,9 @@ export const TUI_RUSSIAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS': 'ЧЧ:ММ:СС',
         'HH:MM:SS.MSS': 'ЧЧ:ММ:СС.МСС',
     },
+    dateTexts: {
+        'dd.mm.yyyy': 'дд.мм.гггг',
+    },
     digitalInformationUnits: ['Б', 'КБ', 'МБ'],
     passwordTexts: ['Показать пароль', 'Скрыть пароль'],
     copyTexts: ['Копировать', 'Скопировано'],

@@ -7,3 +7,4 @@ export * from './mapper';
 export * from './matcher';
 export * from './overscroll-mode';
 export * from './time-mode';
+export * from './date-mode';

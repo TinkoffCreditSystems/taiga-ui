@@ -13,6 +13,9 @@ export const TUI_GERMAN_LANGUAGE_KIT: LanguageKit = {
         'HH:MM:SS': 'HH:MM:SS',
         'HH:MM:SS.MSS': 'HH:MM:SS.MSS',
     },
+    dateTexts: {
+        'dd.mm.yyyy': 'dd.mm.yyyy',
+    },
     digitalInformationUnits: ['B', 'KB', 'MB'],
     passwordTexts: ['Passwort anzeigen', 'Passwort ausblenden'],
     copyTexts: ['Kopieren', 'Kopiert'],
@@ -41,7 +44,8 @@ export const TUI_GERMAN_LANGUAGE_KIT: LanguageKit = {
         defaultLabelMultiple: 'oder mehrere Dateien hier ablegen',
         defaultLinkSingle: 'Datei auswählen',
         defaultLinkMultiple: 'Dateien auswählen',
-        maxSizeRejectionReason: 'Die Dateigröße überschreitet die maximal zulässige Größe von ',
+        maxSizeRejectionReason:
+            'Die Dateigröße überschreitet die maximal zulässige Größe von ',
         formatRejectionReason: 'Ungültiges Dateiformat',
         drop: 'Datei hier ablegen',
         dropMultiple: 'Dateien hier ablegen',

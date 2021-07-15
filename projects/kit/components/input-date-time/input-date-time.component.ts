@@ -20,6 +20,7 @@ import {
     TUI_FOCUSABLE_ITEM_ACCESSOR,
     TUI_LAST_DAY,
     TuiBooleanHandler,
+    TuiDateMode,
     TuiDay,
     tuiDefaultProp,
     TuiFocusableElementAccessor,
@@ -38,13 +39,17 @@ import {
 } from '@taiga-ui/core';
 import {DATE_TIME_SEPARATOR, TUI_DATE_MASK} from '@taiga-ui/kit/constants';
 import {LEFT_ALIGNED_DROPDOWN_CONTROLLER_PROVIDER} from '@taiga-ui/kit/providers';
-import {TUI_CALENDAR_DATA_STREAM, TUI_TIME_TEXTS} from '@taiga-ui/kit/tokens';
+import {
+    TUI_CALENDAR_DATA_STREAM,
+    TUI_DATE_TEXTS,
+    TUI_TIME_TEXTS,
+} from '@taiga-ui/kit/tokens';
 import {
     tuiCreateAutoCorrectedDateTimePipe,
     tuiCreateTimeMask,
 } from '@taiga-ui/kit/utils/mask';
 import {TuiReplayControlValueChangesFactory} from '@taiga-ui/kit/utils/miscellaneous';
-import {Observable} from 'rxjs';
+import {combineLatest, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 // TODO: remove in ivy compilation
@@ -107,9 +112,11 @@ export class TuiInputDateTimeComponent
         @Inject(ChangeDetectorRef) changeDetectorRef: ChangeDetectorRef,
         @Inject(TUI_TEXTFIELD_SIZE)
         private readonly textfieldSize: TuiTextfieldSizeDirective,
-        @Inject(TUI_DATE_FILLER) readonly dateFiller: string,
+        @Inject(TUI_DATE_FILLER) readonly dateFiller: TuiDateMode,
         @Inject(TUI_TIME_TEXTS)
         readonly timeTexts$: Observable<Record<TuiTimeMode, string>>,
+        @Inject(TUI_DATE_TEXTS)
+        readonly dateTexts$: Observable<Record<TuiDateMode, string>>,
     ) {
         super(control, changeDetectorRef);
     }
@@ -188,9 +195,12 @@ export class TuiInputDateTimeComponent
     }
 
     @tuiPure
-    getFiller$(dateFiller: string, timeMode: TuiTimeMode): Observable<string> {
-        return this.timeTexts$.pipe(
-            map(texts => `${dateFiller}${DATE_TIME_SEPARATOR}${texts[timeMode]}`),
+    getFiller$(dateFiller: TuiDateMode, timeMode: TuiTimeMode): Observable<string> {
+        return combineLatest([this.dateTexts$, this.timeTexts$]).pipe(
+            map(
+                ([dateTexts, timeTexts]) =>
+                    `${dateTexts[dateFiller]}${DATE_TIME_SEPARATOR}${timeTexts[timeMode]}`,
+            ),
         );
     }
 

@@ -42,6 +42,9 @@ export interface LanguageKit {
         'HH:MM:SS': string;
         'HH:MM:SS.MSS': string;
     };
+    dateTexts: {
+        'dd.mm.yyyy': string;
+    };
     /**
      * short bytes, kilobytes and megabytes
      * [@string 'B', @param 'KB', @param 'MB']
